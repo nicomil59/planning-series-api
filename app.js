@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require("helmet");
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/user');
 
 require('dotenv').config();
 
@@ -31,8 +32,14 @@ app.use((req, res, next) => {
 
 app.use(helmet());
 
-app.get('/', (req, res) => {
-    res.status(200).json({ message: 'Je teste le serveur express !!' });
-});
+// app.get('/', (req, res) => {
+//     res.status(200).json({ message: 'Je teste le serveur express !!' });
+// });
+
+// Enregistrements des routes
+
+app.use('/api/auth', userRoutes);
+
+// Export de l'app
 
 module.exports = app;
