@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require("helmet");
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
+const programRoutes = require('./routes/program');
 
 require('dotenv').config();
 
@@ -39,6 +40,7 @@ app.use(helmet());
 // Enregistrements des routes
 
 app.use('/api/auth', userRoutes);
+app.use('/api/programs', programRoutes);
 
 // Export de l'app
 
