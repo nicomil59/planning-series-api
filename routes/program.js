@@ -11,10 +11,10 @@ const router = express.Router();
 // Création des routes
 
 router.get('/', programCtrl.getAllPrograms);
-// router.get('/:id', auth, programCtrl.getProgram);
+router.get('/:id', programCtrl.getProgram);
 router.post('/', auth, programCtrl.createProgram);
 // router.put('/:id', auth, programCtrl.updateProgram);
-// router.delete('/:id', auth, programCtrl.deleteProgram);
+router.delete('/:id', auth, programCtrl.deleteProgram);
 
 // Exports
 
