@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/', programCtrl.getAllPrograms);
 router.get('/:id', programCtrl.getProgram);
 router.post('/', auth, programCtrl.createProgram);
-// router.put('/:id', auth, programCtrl.updateProgram);
+router.put('/:id', auth, programCtrl.updateProgram);
 router.delete('/:id', auth, programCtrl.deleteProgram);
 
 // Exports

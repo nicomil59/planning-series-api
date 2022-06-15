@@ -97,3 +97,49 @@ exports.deleteProgram = (req, res, next) => {
             });
         })
 };
+
+// ********** Modification d'un programme **********
+
+exports.updateProgram = (req, res, next) => {
+
+    console.log("req.body", req.body);
+    
+    // Récupération dans la BD du programme qui correspond à l'id dans la requête
+
+    Program.findOne({
+            _id: req.params.id
+        })
+        .then(program => {
+
+            // Vérification de l'existence de la sauce
+
+            if (!program) {
+                return res.status(404).json({
+                    message: "Programme inexistant !"
+                });
+            }
+
+            // Mise à jour du programme
+
+            Program.updateOne({
+                    _id: req.params.id
+                }, {
+                    ...req.body,
+                    _id: req.params.id
+                })
+                .then(() => res.status(200).json({
+                    message: 'Programme modifié !'
+                }))
+                .catch(error => res.status(400).json({
+                    message: error.message
+                }));
+
+        })
+        .catch(error => {
+            res.status(404).json({
+                message: error.message
+            });
+        });
+
+
+};
